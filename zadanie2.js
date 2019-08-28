@@ -17,5 +17,5 @@ function zadanie2(b){
     }
     console.log(tabela);
     }
-    //proszę wpisać ile elementów ma mieć tablica#
+    //proszę wpisać ile elementów ma mieć tablica
     zadanie2(8)
