@@ -14,11 +14,13 @@ function zadanie1([a,d,f],[b,e,g],c){
     var tabela = [];
     for (var i = 0; i < iloscElementow; i++) {
        tabela.push(i);
+       //wyznaczanie roku
        if (a< b && 12 >= d >0 && 12 >= e >0) {
            var randomYear = Math.random() * (koniec[0] - poczatek[0]) + poczatek[0]; 
            var noFloatYear = Math.round(randomYear);
            var min =1;
            var max=12
+           //wyznaczanie miesiąca
             var randomMonth = Math.random() * (max - min) + min; 
             var noFloatMonth = Math.round(randomMonth);
             function lookingMonth(val) {
@@ -62,7 +64,7 @@ function zadanie1([a,d,f],[b,e,g],c){
                 break;
             } return answer;
             }
-            
+            //wyznaczanie dnia miesiąca
                 if (lookingMonth(noFloatMonth) == "Styczeń" || "Marzec" || "Maj" ||
                 "Lipec" || "Sierpień" || "Październik" || "Grudzień") {
                     var minDays1 =1;
@@ -88,13 +90,50 @@ function zadanie1([a,d,f],[b,e,g],c){
                      var randomDay = Math.random() * (maxDays1 - minDays1) +                          minDays1; 
                     var noFloatDay = Math.round(randomDay);
                } 
-    
+               //wyznaczanie dnia tygodnia
+               //wzór Mike'a Keith'a
+            var l=23*noFloatMonth/9;
+            if (noFloatMonth<3)
+            {var z=noFloatYear-1;
+            var y=0;}
+            else
+            {var z=noFloatYear;
+            var y=2;}
+            var DZ=(Math.round(l)+noFloatDay+4+noFloatYear+Math.round(z/4)+Math.round(z/100)+Math.round(z/400)-y)%7;
+             var noFloatDZ = Math.round(DZ);
             
+            function lookingDZ(val) {
+                var answer="";
+            switch(val) {
+                case 0:
+                answer = "Wtorek";
+                break;
+                case 1:
+                answer = "Środa";
+                break;
+                case 2:
+                answer = "Czwartek";
+                break;
+                case 3:
+                answer = "Piątek";
+                break;
+                case 4:
+                answer = "Sobota";
+                break;
+                case 5:
+                answer = "Niedziela";
+                break;
+                case 6:
+                answer = "Poniedziałek";
+                break;
+            } return answer;
+            }
     
-           for (var j = 0; j <tabela.length; j++){
-               
+            //generowanie tabeli z losowymi datami
+           for (var j = 0; j <iloscElementow; j++)
+           {
            tabela.pop();
-           tabela.push([noFloatYear,lookingMonth(noFloatMonth), noFloatDay ]);    
+           tabela.push([lookingDZ(noFloatDZ),noFloatYear,lookingMonth(noFloatMonth),noFloatDay ]);    
          }
        }
      else {
@@ -104,5 +143,5 @@ function zadanie1([a,d,f],[b,e,g],c){
     console.log(tabela.join('\r\n'))
     }
     //Proszę wpisać pierwszą tabelę jako początek przedziału, oraz drugą tablicę jao koniec 
-    // przedziału, na koniec proszę wpisać jak dużą tablicę wyników mamy uzyskać
-     zadanie1([1996,4,29],[2018,5,3],5);
+        // przedziału, na koniec proszę wpisać jak dużą tablicę wyników mamy uzyskać
+     zadanie1([2004,5,14],[2020,2,3],20);
