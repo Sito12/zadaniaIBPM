@@ -103,5 +103,5 @@ function zadanie1([a,d,f],[b,e,g],c){
     }
     console.log(tabela.join('\r\n'))
     }
-    //Proszę wpisać pierwszą tabelę jako początek przedziału, oraz drugą tablicę jao koniec przedziału, na koniec proszę wpisać jak dużą tablicę wyników mamy uzyskać
+    //Proszę wpisać pierwszą tabelę jako początek przedziału, oraz drugą tablicę jao koniec przedziału, na koniec proszę wpisać jak dużą tablicę wyników mamy uzyskać#
      zadanie1([1996,4,29],[2018,5,3],5);
